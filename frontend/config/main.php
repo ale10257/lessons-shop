@@ -9,7 +9,10 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'common\bootstrap\SetUp',
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -17,9 +20,10 @@ return [
             'cookieValidationKey' => $params['cookieValidationKey'],
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'shop\entities\User\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity', 'httpOnly' => true, 'domain' => $params['cookieDomain']],
+            'loginUrl' => ['auth/auth/login'],
         ],
         'session' => [
             'name' => '_session',

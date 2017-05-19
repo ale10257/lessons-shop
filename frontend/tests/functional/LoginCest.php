@@ -3,11 +3,11 @@
 namespace frontend\tests\functional;
 
 use frontend\tests\FunctionalTester;
-use common\fixtures\User as UserFixture;
+use common\fixtures\UserFixture;
 
 class LoginCest
 {
-    function _before(FunctionalTester $I)
+    public function _before(FunctionalTester $I)
     {
         $I->haveFixtures([
             'user' => [
@@ -15,7 +15,7 @@ class LoginCest
                 'dataFile' => codecept_data_dir() . 'login_data.php'
             ]
         ]);
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('auth/auth/login');
     }
 
     protected function formParams($login, $password)
@@ -36,7 +36,7 @@ class LoginCest
     public function checkWrongPassword(FunctionalTester $I)
     {
         $I->submitForm('#login-form', $this->formParams('admin', 'wrong'));
-        $I->seeValidationError('Incorrect username or password.');
+        $I->see('Incorrect username or password.');
     }
     
     public function checkValidLogin(FunctionalTester $I)

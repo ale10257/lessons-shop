@@ -2,6 +2,6 @@
 return [
     'cookieValidationKey' => '',
     'cookieDomain' => '.shop.dev',
-    'frontendHostInfo' => 'http://shop.dev',
-    'backendHostInfo' => 'http://backend.shop.dev',
+    'frontendHostInfo' => 'http://kurs.loc',
+    'backendHostInfo' => 'http://back.kurs.loc',
 ];
